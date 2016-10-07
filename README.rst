@@ -1,6 +1,8 @@
 django-allauth-uwum
 ===================
 
+An additional django-allauth social provider for UWUM (Unified `WeGovNow <http://wegovnow.eu/>`_ User Management).
+
 Install
 -------
 
