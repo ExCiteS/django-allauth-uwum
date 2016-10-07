@@ -13,7 +13,7 @@ repository = path.join('https://github.com/ExCiteS', name)
 setup(
     name=name,
     version=version,
-    description='UWUM provider for django-allauth',
+    description='UWUM social provider for django-allauth',
     url=repository,
     download_url=path.join(repository, 'tarball', version),
     author='Julius Osokinas',
