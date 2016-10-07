@@ -1,6 +1,10 @@
 django-allauth-uwum
 ===================
 
+.. image:: https://travis-ci.org/ExCiteS/django-allauth-uwum.svg?branch=master
+    :alt: Travis CI Build Status
+    :target: https://travis-ci.org/ExCiteS/django-allauth-uwum
+
 An additional django-allauth social provider for UWUM (Unified `WeGovNow <http://wegovnow.eu/>`_ User Management).
 
 Install
