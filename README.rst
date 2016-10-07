@@ -53,7 +53,7 @@ Configure provider: add a full path to the certificate, also all the UWUM URLs. 
         },
     }
 
-Inform UWUM Certificate Authority of your callback URL, e.g.: http://localhost/accounts/uwum/login/callback/
+Inform UWUM Certificate Authority of your callback URL, e.g.: `http://localhost/accounts/uwum/login/callback/`
 
 You're now ready to go!
 
