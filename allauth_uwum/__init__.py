@@ -1,4 +1,7 @@
 """Current version of the UWUM social provider."""
 
-version = (0, 0, 0)
-__version__ = '.'.join(map(str, version))
+from django.utils.version import get_version
+
+
+VERSION = (1, 0, 0, 'beta', 1)
+__version__ = get_version(VERSION)
