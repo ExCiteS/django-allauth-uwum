@@ -53,11 +53,19 @@ Configure provider: add a full path to the certificate, also all the UWUM URLs. 
     SOCIALACCOUNT_PROVIDERS = {
         'uwum': {
             'CERT': path.join(path.dirname(path.abspath(__file__)), 'uwum.pem'),
+            'SCOPE': [],
             'AUTHORIZE_URL': 'https://...',
             'ACCESS_TOKEN_URL': 'https://...',
             'PROFILE_URL': 'https://...',
         },
     }
+
+The default provider scope contains:
+
+- `authentication` - allows to authenticate the user, also provides UWUM member ID and screen name.
+- `notify_email` - allows to retrieve the email address used for notifications.
+
+Any additional scope data can be added in the configuration of the UWUM social provider.
 
 Inform UWUM Certificate Authority of your callback URL, e.g.: `http://localhost/accounts/uwum/login/callback/`
 
