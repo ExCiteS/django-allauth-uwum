@@ -57,6 +57,7 @@ Configure provider: add a full path to the certificate, also all the UWUM URLs. 
             'AUTHORIZE_URL': 'https://...',
             'ACCESS_TOKEN_URL': 'https://...',
             'PROFILE_URL': 'https://...',
+            'NOTIFY_EMAIL_URL': 'https://...',
         },
     }
 
