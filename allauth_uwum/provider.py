@@ -26,8 +26,8 @@ class UWUMProvider(OAuth2Provider):
 
     def extract_uid(self, data):
         """Extract the unique user (UWUM member) identification number."""
-        result = data['result']
-        return str(result['member_id'])
+        member = data.get('member', {})
+        return str(member.get('id'))
 
 
 registry.register(UWUMProvider)

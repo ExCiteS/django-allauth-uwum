@@ -25,10 +25,15 @@ class UWUMAdapter(OAuth2Adapter):
     access_token_url = UWUMProvider.settings.get('ACCESS_TOKEN_URL')
     profile_url = UWUMProvider.settings.get('PROFILE_URL')
 
+    def make_request_headers(self, access_token):
+        """Make the request headers by adding the bearer access token."""
+        return {'Authorization': 'Bearer %s' % access_token}
+
     def complete_login(self, request, app, access_token, **kwargs):
         """Complete the social login process."""
-        headers = {'Authorization': 'Bearer %s' % access_token}
-        response = get(self.profile_url, headers=headers).json()
+        headers = self.make_request_headers(access_token)
+        params = {'include_member': True}
+        response = get(self.profile_url, headers=headers, params=params).json()
         return self.get_provider().sociallogin_from_response(request, response)
 
 
