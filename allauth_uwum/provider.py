@@ -29,5 +29,10 @@ class UWUMProvider(OAuth2Provider):
         member = data.get('member', {})
         return str(member.get('id'))
 
+    def extract_common_fields(self, data):
+        """Extract the common fields for the user (UWUM member)."""
+        member = data.get('member', {})
+        return {'username': member.get('name'), 'email': member.get('email')}
+
 
 registry.register(UWUMProvider)
