@@ -5,7 +5,7 @@ django-allauth-uwum
     :alt: Travis CI Build Status
     :target: https://travis-ci.org/ExCiteS/django-allauth-uwum
 
-An additional django-allauth social provider for UWUM (Unified `WeGovNow <http://wegovnow.eu/>`_ User Management).
+An additional django-allauth provider for UWUM (Unified `WeGovNow <http://wegovnow.eu/>`_ User Management).
 
 Install
 -------
@@ -66,7 +66,7 @@ The default provider scope contains:
 - `authentication` - allows to authenticate the user, also provides UWUM member ID and screen name.
 - `notify_email` - allows to retrieve the email address used for notifications.
 
-Any additional scope data can be added in the configuration of the UWUM social provider.
+Any additional scope data can be added in the configuration of the UWUM provider.
 
 Inform UWUM Certificate Authority of your callback URL, e.g.: `http://localhost/accounts/uwum/login/callback/`
 

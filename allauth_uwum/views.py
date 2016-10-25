@@ -1,4 +1,4 @@
-"""All views of the UWUM social provider."""
+"""All views of the UWUM provider."""
 
 from requests import get
 

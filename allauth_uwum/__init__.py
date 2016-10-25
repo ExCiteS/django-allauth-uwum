@@ -1,4 +1,4 @@
-"""Current version of the UWUM social provider."""
+"""Current version of the UWUM provider."""
 
 from django.utils.version import get_version
 

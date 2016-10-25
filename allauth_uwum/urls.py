@@ -1,4 +1,4 @@
-"""All URLs of the UWUM social provider."""
+"""All URLs of the UWUM provider."""
 
 from allauth.socialaccount.providers.oauth2.urls import default_urlpatterns
 
