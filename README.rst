@@ -53,7 +53,7 @@ Configure provider: add a full path to the certificate, also all the UWUM URLs. 
     SOCIALACCOUNT_PROVIDERS = {
         'uwum': {
             'CERT': path.join(path.dirname(path.abspath(__file__)), 'uwum.pem'),
-            'SCOPE': [],
+            'SCOPE': ['authentication', 'notify_email', 'post', 'rate', 'vote'],
             'AUTHORIZE_URL': 'https://...',
             'ACCESS_TOKEN_URL': 'https://...',
             'PROFILE_URL': 'https://...',
@@ -61,12 +61,10 @@ Configure provider: add a full path to the certificate, also all the UWUM URLs. 
         },
     }
 
-The default provider scope contains:
+Any additional scope data can be added in the configuration of the UWUM provider. However, the default must be kept:
 
 - `authentication` - allows to authenticate the user, also provides UWUM member ID and screen name.
 - `notify_email` - allows to retrieve the email address used for notifications.
-
-Any additional scope data can be added in the configuration of the UWUM provider.
 
 Inform UWUM Certificate Authority of your callback URL, e.g.: `http://localhost/accounts/uwum/login/callback/`
 
