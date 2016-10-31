@@ -27,19 +27,15 @@ class UWUMAdapter(OAuth2Adapter):
     profile_url = UWUMProvider.settings.get('PROFILE_URL')
     notify_email_url = UWUMProvider.settings.get('NOTIFY_EMAIL_URL')
 
-    def make_request_headers(self, access_token):
-        """Make the request headers by adding the bearer access token."""
-        return {'Authorization': 'Bearer %s' % access_token}
-
     def get_notify_email(self, access_token):
         """Get the user (UWUM member) email address used for notifications."""
-        headers = self.make_request_headers(access_token)
+        headers = self._make_request_headers(access_token)
         response = get(self.notify_email_url, headers=headers).json()
         return response.get('result', {}).get('notify_email')
 
     def complete_login(self, request, app, access_token, **kwargs):
         """Complete the social login process."""
-        headers = self.make_request_headers(access_token)
+        headers = self._make_request_headers(access_token)
         params = {'include_member': True}
         response = get(self.profile_url, headers=headers, params=params).json()
 
@@ -48,6 +44,10 @@ class UWUMAdapter(OAuth2Adapter):
             response['member']['email'] = self.get_notify_email(access_token)
 
         return self.get_provider().sociallogin_from_response(request, response)
+
+    def _make_request_headers(self, access_token):
+        """Make the request headers by adding the bearer access token."""
+        return {'Authorization': 'Bearer %s' % access_token}
 
 
 class UWUMView(OAuth2View):
