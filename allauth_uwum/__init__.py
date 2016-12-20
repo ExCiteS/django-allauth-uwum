@@ -1,7 +1,12 @@
 """Current version of the UWUM provider."""
 
-from django.utils.version import get_version
+major, minor, patch, stage, revision = (1, 0, 0, 'final', 0)
 
+__version__ = '%s.%s' % (major, minor)
 
-VERSION = (1, 0, 0, 'final', 0)
-__version__ = get_version(VERSION)
+if patch:
+    __version__ += '.%s' % (patch)
+
+if stage != 'final':
+    stage_mapping = {'alpha': 'a', 'beta': 'b', 'rc': 'c'}
+    __version__ += '%s%s' % (stage_mapping[stage], revision)
