@@ -35,19 +35,19 @@ class UWUMAdapter(OAuth2Adapter):
 
     def complete_login(self, request, app, access_token, **kwargs):
         """Complete the social login process."""
-        headers = self._make_request_headers(access_token)
-        params = {'include_member': True}
-        response = post(
-            self.validate_url,
-            headers=headers,
-            params=params,
-        ).json()
+        response = self.validate_user(access_token).json()
 
         if app_settings.QUERY_EMAIL and response['member']:
             # Email address used for notifications will be a default user email
             response['member']['email'] = self.get_notify_email(access_token)
 
         return self.get_provider().sociallogin_from_response(request, response)
+
+    def validate_user(self, access_token):
+        """Validate the user."""
+        headers = self._make_request_headers(access_token)
+        params = {'include_member': True}
+        return post(self.validate_url, headers=headers, params=params)
 
     def _make_request_headers(self, access_token):
         """Make the request headers by adding the bearer access token."""
