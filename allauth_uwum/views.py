@@ -1,6 +1,6 @@
 """All views of the UWUM provider."""
 
-from requests import get
+from requests import get, post
 
 from django.core.urlresolvers import reverse
 
@@ -23,8 +23,8 @@ class UWUMAdapter(OAuth2Adapter):
     provider_id = UWUMProvider.id
 
     authorize_url = UWUMProvider.settings.get('AUTHORIZE_URL')
+    validate_url = UWUMProvider.settings.get('VALIDATE_URL')
     access_token_url = UWUMProvider.settings.get('ACCESS_TOKEN_URL')
-    profile_url = UWUMProvider.settings.get('PROFILE_URL')
     notify_email_url = UWUMProvider.settings.get('NOTIFY_EMAIL_URL')
 
     def get_notify_email(self, access_token):
@@ -37,7 +37,11 @@ class UWUMAdapter(OAuth2Adapter):
         """Complete the social login process."""
         headers = self._make_request_headers(access_token)
         params = {'include_member': True}
-        response = get(self.profile_url, headers=headers, params=params).json()
+        response = post(
+            self.validate_url,
+            headers=headers,
+            params=params,
+        ).json()
 
         if app_settings.QUERY_EMAIL and response['member']:
             # Email address used for notifications will be a default user email

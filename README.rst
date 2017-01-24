@@ -55,8 +55,8 @@ Configure provider: add a full path to the certificate, also all the UWUM URLs. 
             'CERT': path.join(path.dirname(path.abspath(__file__)), 'uwum.pem'),
             'SCOPE': ['authentication', 'notify_email', 'post', 'rate', 'vote'],
             'AUTHORIZE_URL': 'https://...',
+            'VALIDATE_URL': 'https://...',
             'ACCESS_TOKEN_URL': 'https://...',
-            'PROFILE_URL': 'https://...',
             'NOTIFY_EMAIL_URL': 'https://...',
         },
     }
