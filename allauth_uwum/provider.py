@@ -22,7 +22,12 @@ class UWUMProvider(OAuth2Provider):
 
     def get_default_scope(self):
         """Get the default UWUM scope."""
-        return ['authentication', 'notify_email']
+        default_scope = ['authentication']
+
+        if app_settings.QUERY_EMAIL:
+            default_scope.append('notify_email')
+
+        return default_scope
 
     def extract_uid(self, data):
         """Extract the unique user (UWUM member) identification number."""
