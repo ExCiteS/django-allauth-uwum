@@ -1,6 +1,6 @@
 """Current version of the UWUM provider."""
 
-major, minor, patch, stage, revision = (1, 1, 0, 'beta', 1)
+major, minor, patch, stage, revision = (1, 1, 0, 'beta', 2)
 
 __version__ = '%s.%s' % (major, minor)
 
