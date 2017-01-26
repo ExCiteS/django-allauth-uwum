@@ -21,11 +21,25 @@ class UWUMAdapter(OAuth2Adapter):
     """The UWUM OAuth2 adapter."""
 
     provider_id = UWUMProvider.id
+    provider_settings = UWUMProvider.settings
 
-    authorize_url = UWUMProvider.settings.get('AUTHORIZE_URL')
-    validate_url = UWUMProvider.settings.get('VALIDATE_URL')
-    access_token_url = UWUMProvider.settings.get('ACCESS_TOKEN_URL')
-    notify_email_url = UWUMProvider.settings.get('NOTIFY_EMAIL_URL')
+    # General UWUM API endpoints
+    regular_api_url = '%s/api/%s' % (
+        provider_settings.get('REGULAR_URL').rstrip('/'),
+        provider_settings.get('API_VERSION'),
+    )
+    cert_api_url = '%s/api/%s' % (
+        provider_settings.get('CERT_URL').rstrip('/'),
+        provider_settings.get('API_VERSION'),
+    )
+
+    # Base OAuth2 endpoints
+    authorize_url = '%s/authorization' % regular_api_url
+    access_token_url = '%s/token' % cert_api_url
+
+    # Additional UWUM endpoints
+    validate_url = '%s/validate' % regular_api_url
+    notify_email_url = '%s/notify_email' % regular_api_url
 
     def get_notify_email(self, access_token):
         """Get the user (UWUM member) email address used for notifications."""

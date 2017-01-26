@@ -44,7 +44,7 @@ Combine the signed CRT file with a key:
 
 Place a combined file (certificate) outside of the web directory.
 
-Configure provider: add a full path to the certificate, also all the UWUM URLs. For example:
+Configure provider: add a full path to the certificate, also API version used alongside UWUM URLs. For example:
 
 .. code-block:: python
 
@@ -54,10 +54,9 @@ Configure provider: add a full path to the certificate, also all the UWUM URLs. 
         'uwum': {
             'CERT': path.join(path.dirname(path.abspath(__file__)), 'uwum.pem'),
             'SCOPE': ['authentication', 'notify_email', 'post', 'rate', 'vote'],
-            'AUTHORIZE_URL': 'https://...',
-            'VALIDATE_URL': 'https://...',
-            'ACCESS_TOKEN_URL': 'https://...',
-            'NOTIFY_EMAIL_URL': 'https://...',
+            'REGULAR_URL': 'https://uwum-regular.server.dev',
+            'CERT_URL': 'https://uwum-cert.server.dev',
+            'API_VERSION': 1,
         },
     }
 
