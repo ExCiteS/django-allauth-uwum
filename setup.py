@@ -17,7 +17,7 @@ setup(
     url=repository,
     download_url=path.join(repository, 'tarball', version),
     author='Julius Osokinas',
-    author_email='j.osokinas@gmail.com',
+    author_email='j.osokinas@ucl.ac.uk',
     license='MIT',
     packages=find_packages(),
     include_package_data=True,
