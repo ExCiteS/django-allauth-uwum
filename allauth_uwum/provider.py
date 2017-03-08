@@ -1,7 +1,9 @@
 """The UWUM (Unified WeGovNow User Management) provider."""
 
+from distutils.version import StrictVersion
+
+from allauth import __version__
 from allauth.socialaccount import app_settings
-from allauth.socialaccount.providers import registry
 from allauth.socialaccount.providers.base import ProviderAccount
 from allauth.socialaccount.providers.oauth2.provider import OAuth2Provider
 
@@ -40,4 +42,9 @@ class UWUMProvider(OAuth2Provider):
         return {'username': member.get('name'), 'email': member.get('email')}
 
 
-registry.register(UWUMProvider)
+# The way provider is registered changed since django-allauth version 0.31.0
+if StrictVersion(__version__) >= StrictVersion('0.31.0'):
+    provider_classes = [UWUMProvider]
+else:
+    from allauth.socialaccount.providers.registry import register
+    register(UWUMProvider)
