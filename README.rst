@@ -30,7 +30,8 @@ Create X.509 certificate signing request (CSR) and a new key:
 
 .. code-block:: console
 
-    openssl req -nodes rsa:2048 -new -out uwum.csr -newkey -keyout uwum.key
+    openssl genrsa -out uwum.key 2048
+    openssl req -key uwum.key -new -sha256 -out uwum.csr
 
 Client identification number will be the common name (CN) declared in the CSR.
 
